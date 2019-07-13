@@ -89,11 +89,11 @@ export default {
     padding-right: 10px;
   }
   .items {
-    width: 400px;
+    width: 320px;
     text-align: left;
   }
   .category {
-    width: 160px;
+    width: 120px;
     text-align: left;
   }
   .rank {
@@ -102,7 +102,7 @@ export default {
   }
   .created,
   .updated {
-    width: 160px;
+    width: 240px;
     text-align: right;
   }
   p {

@@ -120,8 +120,8 @@ src-vue/node_modules
 src-vue/dist
 
 # local env files
-src-vue/.env.local
-src-vue/.env.*.local
+.env.local
+.env.*.local
 
 # Log files
 src-vue/npm-debug.log*
@@ -136,3 +136,6 @@ src-vue/*.ntvs*
 src-vue/*.njsproj
 src-vue/*.sln
 src-vue/*.sw?
+
+staticfiles/*.hot-update.js
+staticfiles/*.hot-update.json

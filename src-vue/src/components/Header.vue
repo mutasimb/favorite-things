@@ -8,7 +8,7 @@
         </p>
       </div>
       <div class="header-right">
-        <p>Mutasim Billah</p>
+        <a href="https://github.com/mutasimb/favorite-things" target="_blank">GitHub</a>
       </div>
     </div>
   </header>
@@ -40,6 +40,11 @@
       span {
         margin: 0 10px;
       }
+    }
+    a {
+      margin: 0;
+      line-height: 75px;
+      color: inherit;
     }
   }
 }
