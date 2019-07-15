@@ -2,19 +2,11 @@
 
 ## Question 2
 
-#### Question
-
 > How long did you spend on the coding test below?
-
-#### Answer
 
 It took me around 2 weeks to do what I have done so far.
 
-#### Question
-
 > What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
-
-#### Answer
 
 Being primarily a front-end dev, and coming from a React background, I am relatively new to Vue JS. But I guess I picked it up fast enough. Although I wasn't able to implement many features that I should have. I wasn't able to implement `vue-router` with django, therefore I haven't been able to make it an SPA. I also wished to utlize `vuetify` or `bootstrap`-like css frameworks, I couldn't. Therefore the application is not responsive. Error responses from APIs wasn't handled properly. I'm highly skilled with `Redux`, and for this project I've been planning on using `vuex` for state management. Eventually I couldn't afford the time to learn and utilize that.
 
@@ -24,21 +16,13 @@ Finally deployment, I still don't know what I missed. I did everything I could t
 
 ## Question 3
 
-#### Question
-
 > What was the most useful feature that was added to the latest version of your chosen language?
-
-#### Answer
 
 This question is a bit confusing to me. If we're talking about languages, there was no 'choice'. It was both python and javascript. If we're talking about the front-end frameworks, I'd usually choose React, but for this project I chose Vue.
 
 For JS, I'd say the 'the most useful' features still would be the features that enable functional programming. More specifically, the `map`, `reduce`, `filter` and `forEach` methods.
 
-#### Question
-
 > Please include a snippet of code that shows how you've used it.
-
-#### Answer
 
 ```javascript
 // src-vue/src/components/TableRow.vue
@@ -61,10 +45,6 @@ export default {
 
 ## Question 4
 
-#### Question
-
 > How would you track down a performance issue in production? Have you ever had to do this?
-
-#### Answer
 
 No.
