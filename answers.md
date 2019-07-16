@@ -8,7 +8,7 @@ It took me around 2 weeks to do what I have done so far.
 
 > What would you add to your solution if you had more time? If you didn't spend much time on the coding test then use this as an opportunity to explain what you would add.
 
-Being primarily a front-end dev, and coming from a React background, I am relatively new to Vue JS. But I guess I picked it up fast enough. Although I wasn't able to implement many features that I should have. I wasn't able to implement `vue-router` with django, therefore I haven't been able to make it an SPA. I also wished to utlize `vuetify` or `bootstrap`-like css frameworks, I couldn't. Therefore the application is not responsive. Error responses from APIs wasn't handled properly. I'm highly skilled with `Redux`, and for this project I've been planning on using `vuex` for state management. Eventually I couldn't afford the time to learn and utilize that.
+Being primarily a front-end dev, and coming from a React background, I am relatively new to Vue JS. But I guess I picked it up fast enough. Although I wasn't able to implement many features that I should have. I wasn't able to implement `vue-router` with django, therefore I haven't been able to make it an SPA. I also wished to utlize `vuetify` or `bootstrap`-like css frameworks, I couldn't. Therefore the application is not responsive. I'm highly skilled with `Redux`, and for this project I've been planning on using `vuex` for state management. Eventually I couldn't afford the time to learn and utilize that.
 
 On the back-end, I haven't included 'audit log' in the model. I would've implemented that.
 
