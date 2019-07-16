@@ -1,7 +1,12 @@
 <template>
   <div class="table">
-    <TableHeader :columns="columns" @newItem="newItem" @columnClicked="handleColumnClicked"/>
-    <div class="body-row">
+    <TableHeader
+      v-if="jsonData.length"
+      :columns="columns"
+      @newItem="newItem"
+      @columnClicked="handleColumnClicked"
+    />
+    <div v-if="jsonData.length" class="body-row">
       <TableRow
         v-for="el in sort"
         :key="el.pid"
@@ -15,10 +20,17 @@
         @editHandler="handleEditRow"
       />
     </div>
+    <div v-else-if="loadingStatus">
+      <p>Loading list of favorite items</p>
+    </div>
+    <div v-else class="center">
+      <p>Sorry! Failed to load data.</p>
+    </div>
     <Modal
       v-if="(modalData && Object.keys(modalData).length > 0)"
       :categories="categories"
       :formData="modalData"
+      :errorMessage="errorMessage"
       @closeModalWithoutSaving="closeModalHandler"
       @formSubmission="handleFormSubmission"
       @deleteHandler="deleteItem"
@@ -52,7 +64,9 @@ export default {
         { className: "rank", name: "Rank", active: true, type: "Asc" },
         { className: "created", name: "Created Date" },
         { className: "updated", name: "Updated Date" }
-      ]
+      ],
+      loadingStatus: false,
+      errorMessage: ""
     };
   },
   computed: {
@@ -114,6 +128,12 @@ export default {
     }
   },
   methods: {
+    setErrorMessage: function(message) {
+      this.errorMessage = message;
+      setTimeout(() => {
+        this.errorMessage = "";
+      }, 3000);
+    },
     validateRanking: function(cat, rank, method) {
       let categoryItems = this.jsonData.filter(el => el.category === cat)
         .length;
@@ -161,14 +181,15 @@ export default {
           ranking: this.validateRanking(category, +ranking, "put"),
           meta
         };
+        this.errorMessage = "";
         axios
           .put(`/api/favorite-things/${value.id}`, putData)
-          .then(res => {
+          .then(() => {
             this.updateJson();
             this.closeModalHandler();
           })
-          .catch(err => {
-            console.log(err);
+          .catch(() => {
+            this.setErrorMessage("Sorry, failed to update!");
           });
       } else {
         let postData = {
@@ -178,14 +199,15 @@ export default {
           ranking: this.validateRanking(category, +ranking, "post"),
           meta
         };
+        this.errorMessage = "";
         axios
           .post("/api/favorite-things/", postData)
-          .then(res => {
+          .then(() => {
             this.updateJson();
             this.closeModalHandler();
           })
-          .catch(err => {
-            console.log(err);
+          .catch(() => {
+            this.setErrorMessage("Sorry, failed to add item!");
           });
       }
     },
@@ -201,8 +223,8 @@ export default {
           this.updateJson();
           this.closeModalHandler();
         })
-        .catch(err => {
-          return err;
+        .catch(() => {
+          this.setErrorMessage("Sorry, failed to delete!");
         });
     },
     closeModalHandler: function() {
@@ -221,6 +243,7 @@ export default {
       };
     },
     updateJson: function() {
+      this.loadingStatus = true;
       axios
         .get("/api/favorite-things")
         .then(res => {
@@ -230,9 +253,10 @@ export default {
               acc.indexOf(el.category) > -1 ? acc : [...acc, el.category],
             []
           );
+          this.loadingStatus = false;
         })
         .catch(() => {
-          this.jsonError = true;
+          this.loadingStatus = false;
         });
     }
   },
@@ -268,6 +292,15 @@ export default {
     right: 10px;
     -moz-border-radius: 100px / 10px;
     border-radius: 100px / 10px;
+  }
+  .center {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  p {
+    color: #737488;
   }
 }
 </style>

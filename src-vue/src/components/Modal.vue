@@ -13,6 +13,7 @@
         <ModalView v-else :formData="formData" @delete="handleDelete" @edit="editMode = true"/>
       </div>
     </div>
+    <p v-if="errorMessage" class="error-message">{{errorMessage}}</p>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ export default {
     };
   },
   props: {
+    errorMessage: String,
     formData: Object,
     categories: Array
   },
@@ -95,5 +97,13 @@ export default {
       border-radius: 100px / 10px;
     }
   }
+}
+.error-message {
+  position: fixed;
+  z-index: 101;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  color: red;
 }
 </style>
